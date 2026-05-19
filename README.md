@@ -41,8 +41,12 @@ The export requires an active browser session and cannot be replicated with `wge
 
 1. Go to: https://cadsr.cancer.gov/onedata/dmdirect/NIH/NCI/CO/CDEDD?filter=CDEDD.ITEM_ID=5473%20and%20ver_nr=14
 2. Click the notepad icon under "View" (2nd column)
-3. Select "6. Permissible Values"
-4. For bulk download go to "Delivery Options" and select "Export to Excel"
+
+   <img width="488" height="214" alt="1" src="https://github.com/user-attachments/assets/72a9bf90-0a1c-4c98-8e09-d99dc6c9b691" />
+4. Select "6. Permissible Values"
+   <img width="1879" height="807" alt="2" src="https://github.com/user-attachments/assets/43670058-fedc-4f8e-9799-dc7dcca1fadc" />
+5. For bulk download go to "Delivery Options" and select "Export to Excel"
+   <img width="1960" height="912" alt="3" src="https://github.com/user-attachments/assets/1501a860-001d-4fe7-93e8-95cb65227629" />
 
 ---
 
