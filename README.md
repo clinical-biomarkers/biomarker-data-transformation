@@ -5,25 +5,7 @@ Raw data extraction and transformation scripts
 
 ## Downloads
 
-### Permissible Values via caDSR API (Recommended)
-
-The caDSR API provides programmatic access to permissible values without requiring a browser session. Use the `/DataElement/{publicId}` endpoint with an explicit `Accept: application/json` header — without it, the server returns HTML.
-
-```bash
-curl -s -H "Accept: application/json" \
-  "https://cadsrapi.cancer.gov/rad/NCIAPI.v1_0:NciApiRad/DataElement/5473?version=14" \
-  -o de_5473.json
-```
-
-Permissible values are nested under `DataElement.ValueDomain.PermissibleValues` in the response. The full response also includes `ClassificationSchemes`, `AlternateNames`, and `ReferenceDocuments`, which appear before and after the permissible values in the JSON.
-
-To extract and count permissible values:
-
-```bash
-jq '{count: (.DataElement.ValueDomain.PermissibleValues | length), first: .DataElement.ValueDomain.PermissibleValues[0]}' de_5473.json
-```
-
-### Permissible Values via Browser Export (Alternative)
+### Permissible Values via Browser Export (Recommended)
 
 The caDSR OneData UI at `cadsr.cancer.gov/onedata` offers an "Export to Excel" option under each data element's Permissible Values tab. The downloaded file (`od_001.xls`) contains the following columns:
 
@@ -45,6 +27,26 @@ The export requires an active browser session and cannot be replicated with `wge
    <img width="488" height="214" alt="1" src="https://github.com/user-attachments/assets/72a9bf90-0a1c-4c98-8e09-d99dc6c9b691" />
 4. Select "6. Permissible Values"
    <img width="1879" height="807" alt="2" src="https://github.com/user-attachments/assets/43670058-fedc-4f8e-9799-dc7dcca1fadc" />
+
+### Permissible Values via caDSR API (to be reviewed)
+
+The instructions below are incorrect, more research is needed to determine the correct API endpoint.
+
+The caDSR API provides programmatic access to permissible values without requiring a browser session. Use the `/DataElement/{publicId}` endpoint with an explicit `Accept: application/json` header — without it, the server returns HTML.
+
+```bash
+curl -s -H "Accept: application/json" \
+  "https://cadsrapi.cancer.gov/rad/NCIAPI.v1_0:NciApiRad/DataElement/5473?version=14" \
+  -o de_5473.json
+```
+
+Permissible values are nested under `DataElement.ValueDomain.PermissibleValues` in the response. The full response also includes `ClassificationSchemes`, `AlternateNames`, and `ReferenceDocuments`, which appear before and after the permissible values in the JSON.
+
+To extract and count permissible values:
+
+```bash
+jq '{count: (.DataElement.ValueDomain.PermissibleValues | length), first: .DataElement.ValueDomain.PermissibleValues[0]}' de_5473.json
+```
 5. For bulk download go to "Delivery Options" and select "Export to Excel"
    <img width="1960" height="912" alt="3" src="https://github.com/user-attachments/assets/1501a860-001d-4fe7-93e8-95cb65227629" />
 
